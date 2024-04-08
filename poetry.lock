@@ -229,6 +229,17 @@ files = [
 ]
 
 [[package]]
+name = "rest-framework-simplejwt"
+version = "0.0.2"
+description = "PoC of pipreqs dependency confusion"
+optional = false
+python-versions = ">=3.0"
+files = [
+    {file = "rest_framework_simplejwt-0.0.2-py3-none-any.whl", hash = "sha256:620c56826ff4791c4aaa730ec52aed1f4c74b9c20ea15b9fc1a39bdf99a29a30"},
+    {file = "rest_framework_simplejwt-0.0.2.tar.gz", hash = "sha256:035187ce5380e18e8b966610a89b6460fb4b73cd179979343888fb190328125d"},
+]
+
+[[package]]
 name = "sqlparse"
 version = "0.4.4"
 description = "A non-validating SQL parser."
@@ -258,4 +269,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "dacca5b26b810ad4c092b60e4a99edaebc90fc96dcebbc0fe839eb5ef3d64cbe"
+content-hash = "3f62d66212c81baa457412a5a08e5acffe00c1616fff0e51169299a8ff5bfb71"
