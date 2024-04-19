@@ -11,18 +11,18 @@ class SubscribeTestCase(APITestCase):
         self.client = APIClient()
         self.user = User.objects.create(email="test@gmail.com", is_superuser=True, password="2648")
         self.client.force_authenticate(user=self.user)
-        Course.objects.create(name='test')
+        self.course = Course.objects.create(name='test')
 
     def test_retrieve_subscribe(self):
         """ Тестирование функционала работы подписки на обновления курса"""
 
         data = {
-            "course_id": 1,
-            "user": 1
+            "course_id": self.course.id,
+            "user": self.user.id
         }
 
         response = self.client.post(
-            '/subscription/',
+            reverse('lms:subscription'),
             data=data
         )
 
@@ -94,13 +94,17 @@ class LessonTestCase(APITestCase):
         data = {
             "name": "test_lesson2",
             "desc": "test_lesson2",
-            "course": 1
+            "course": self.course.id,
+            "video_link": "https://www.youtube.com/"
         }
 
         response = self.client.post(
             reverse('lms:lessons-create'),
             data=data
         )
+
+        print(response.json())
+
 
         self.assertEqual(
             response.status_code,
@@ -114,7 +118,7 @@ class LessonTestCase(APITestCase):
             desc='Test_lesson',
             owner=self.user,
             course=self.course,
-            # video_link='https://www.youtube.com/'
+            video_link='https://www.youtube.com/'
         )
 
         response = self.client.patch(
@@ -122,7 +126,6 @@ class LessonTestCase(APITestCase):
             {'desc': 'change'}
         )
 
-        print(response.data)
 
         self.assertEqual(
             response.status_code,

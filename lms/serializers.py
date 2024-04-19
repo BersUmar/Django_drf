@@ -4,10 +4,11 @@ from lms.vaidators import URLValidator
 
 
 class LessonSerializer(serializers.ModelSerializer):
+    video_link = serializers.URLField(required=False, validators=[URLValidator(field='video_link')])
     class Meta:
         model = Lesson
         fields = '__all__'
-        # validators = [URLValidator(field='video_link')]
+
 
 
 class CourseSerializer(serializers.ModelSerializer):
